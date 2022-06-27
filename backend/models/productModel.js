@@ -12,7 +12,29 @@ export const getProducts = (result) => {
         }
     });   
 }
- 
+
+export const login = (username, password, result) => {
+    db.query("SELECT * FROM account WHERE username = ? AND password = ?", [username, password], (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });   
+}
+
+export const signUp = (Username, Email, Password, result) => {
+    db.query("INSERT INTO account (username, email, password) VALUES (?, ?, ?)", [Username, Email, Password], (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });   
+}
+
 // Get Single Product
 export const getProductById = (id, result) => {
     db.query("SELECT * FROM product WHERE product_id = ?", [id], (err, results) => {             

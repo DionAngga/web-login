@@ -1,5 +1,5 @@
 // Import function from Product Model
-import { getProducts, getProductById, insertProduct, updateProductById, deleteProductById } from "../models/productModel.js";
+import { getProducts, getProductById, insertProduct, updateProductById, deleteProductById, login, signUp } from "../models/productModel.js";
  
 // Get All Products
 export const showProducts = (req, res) => {
@@ -11,6 +11,26 @@ export const showProducts = (req, res) => {
         }
             res.json(results);
         
+    });
+}
+
+export const loginAccount = (req, res) => {
+    login(req.body.username, req.body.password, (err, results) => {
+        if (err){
+            res.send(err);
+            return;
+        }
+            res.json(results);
+    });
+}
+
+export const signUpAccount = (req, res) => {
+    signUp(req.body.username, req.body.email, req.body.password, (err, results) => {
+        if (err){
+            res.send(err);
+            return;
+        }
+            res.json(results);
     });
 }
  

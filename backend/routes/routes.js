@@ -2,7 +2,7 @@
 import express from "express";
  
 // import function from controller
-import { showProducts, showProductById, createProduct, updateProduct, deleteProduct } from "../controllers/product.js";
+import {signUpAccount ,loginAccount, showProducts, showProductById, createProduct, updateProduct, deleteProduct } from "../controllers/product.js";
  
 // init express router
 const router = express.Router();
@@ -21,6 +21,10 @@ router.put('/products/:id', updateProduct);
  
 // Delete Product
 router.delete('/products/:id', deleteProduct);
+
+router.post('/signin', loginAccount);
+
+router.post('/signup', signUpAccount);
  
 // export default router
 export default router;
